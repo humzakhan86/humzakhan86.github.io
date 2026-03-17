@@ -253,6 +253,10 @@
   .proj-link:hover { background: rgba(79,195,247,0.1); border-color: var(--accent); }
   .proj-link.video { color: #ef9f27; border-color: rgba(239,159,39,0.25); }
   .proj-link.video:hover { background: rgba(239,159,39,0.08); border-color: #ef9f27; }
+  .proj-link.matlab { color: #e53935; border-color: rgba(229,57,53,0.25); }
+  .proj-link.matlab:hover { background: rgba(229,57,53,0.08); border-color: #e53935; }
+  .project-links.two-col-links { display: flex; gap: 24px; }
+  .project-links.two-col-links > div { display: flex; flex-direction: column; gap: 8px; }
 
   /* SKILLS */
   #skills { background: var(--surface); }
@@ -440,9 +444,10 @@
         </div>
         <div class="project-links">
           <!-- REPLACE the href="#" below with your actual YouTube link -->
-          <a class="proj-link video" href="#" target="_blank">▶ Maiden Flight</a>
-          <a class="proj-link video" href="#" target="_blank">▶ Outboard Test</a>
-          <a class="proj-link video" href="#" target="_blank">▶ Inboard Test</a>
+          <a class="proj-link video" href="https://www.youtube.com/watch?v=Cfscgf1MKuQ&list=PLjuRIDBMywVoqfNPF4f-lLhGrJDiboefv&index=2" target="_blank">▶ Maiden Test Flight</a>
+          <a class="proj-link video" href="https://www.youtube.com/watch?v=Hy4lRrWNf9o&list=PLjuRIDBMywVoqfNPF4f-lLhGrJDiboefv&index=3" target="_blank">▶ Outboard Test DVR</a>
+          <a class="proj-link video" href="https://www.youtube.com/watch?v=LPflbmwefQ4&list=PLjuRIDBMywVoqfNPF4f-lLhGrJDiboefv&index=4" target="_blank">▶ Inboard Test DVR</a>
+          <a class="proj-link" href="docs/Hermes_Report.pdf" target="_blank">↗ Final Design Report</a>
         </div>
       </div>
 
@@ -456,12 +461,24 @@
           <span class="tool-chip">SolidWorks</span>
           <span class="tool-chip">Carbon Fiber</span>
         </div>
-        <div class="project-links">
-          <!-- REPLACE href="#" with your YouTube flight video links -->
+                <div class="project-links two-col-links">
+          <div class="video-links">
+            <a class="proj-link video" href="https://youtu.be/6GF1fM8yx2Y">▶ Bull Shark - Comp. Flight (DBF '25)</a>
+            <a class="proj-link video" href="https://youtu.be/u-SdMosoaLQ">▶ Condor - Comp. Flight (DBF '24)</a>
+            <a class="proj-link video" href="https://youtu.be/Tkv6FA5sFgI">▶ Hammerhead - Comp. Flight (DBF '23)</a>
+          </div>
+          <div class="report-links">
+            <a class="proj-link" href="docs/2025DBF_UNIVERSITY_AT_BUFFALO_DESIGN_REPORT.pdf">↗ Technical Report (DBF '25)</a>
+            <a class="proj-link" href="docs/2024DBF_UNIVERSITY_AT_BUFFALO_DESIGN_REPORT.pdf">↗ Technical Report (DBF '24)</a>
+            <a class="proj-link" href="docs/2023DBF_UNIVERSITY_AT_BUFFALO_DESIGN_REPORT.pdf">↗ Technical Report (DBF '23)</a>
+          </div>
+        </div>
+        <!--div class="project-links">
+           REPLACE href="#" with your YouTube flight video links
           <a class="proj-link video" href="#" target="_blank">▶ Bull Shark Flight</a>
           <a class="proj-link video" href="#" target="_blank">▶ Condor V4 M2</a>
           <a class="proj-link video" href="#" target="_blank">▶ 2023 Flight</a>
-        </div>
+        </div> -->
       </div>
 
       <div class="project-card fade-in">
@@ -476,8 +493,8 @@
         <div class="project-links">
           <!-- These links came from your portfolio PDF — already filled in -->
           <!-- To host locally instead: upload PDFs to GitHub and change href to: docs/latios-report-1.pdf -->
-          <a class="proj-link" href="https://tinyurl.com/3ynevyhc" target="_blank">↗ Report Part 1</a>
-          <a class="proj-link" href="https://tinyurl.com/3xpd6njs" target="_blank">↗ Report Part 2</a>
+          <a class="proj-link" href="docs/Aircraft-Design-Report.pdf" target="_blank">↗ Final Design Report</a>
+          <a class="proj-link matlab" href="docs/Aircraft_Design_Optimization_Script_humza_khan.m" target="_blank">↗ MATLAB Optimization Script</a>
         </div>
       </div>
 
@@ -491,8 +508,8 @@
           <span class="tool-chip">Trajectory Theory</span>
         </div>
         <div class="project-links">
-          <a class="proj-link" href="https://tinyurl.com/2s3exetu" target="_blank">↗ Report Part 1</a>
-          <a class="proj-link" href="https://tinyurl.com/yenavbdx" target="_blank">↗ Report Part 2</a>
+          <a class="proj-link" href="docs/MAE423_Final_Project_Report.pdf" target="_blank">↗ Final Design Report</a>
+          <a class="proj-link matlab" href="docs/project_hhkhan.m" target="_blank">↗ MATLAB Optimization Script (For Every Possible Combination)</a>
         </div>
       </div>
 
@@ -506,7 +523,7 @@
           <span class="tool-chip">SolidWorks</span>
         </div>
         <div class="project-links">
-          <a class="proj-link" href="https://tinyurl.com/yck3y7hw" target="_blank">↗ Full Report</a>
+          <a class="proj-link" href="docs/MAE409_Final_Project_hhkhan.pdf" target="_blank">↗ Final FEA/CFD Analysis Report</a>
         </div>
       </div>
 
@@ -520,8 +537,8 @@
           <span class="tool-chip">ΔV Planning</span>
         </div>
         <div class="project-links">
-          <a class="proj-link" href="https://tinyurl.com/2v8k5w39" target="_blank">↗ Report Part 1</a>
-          <a class="proj-link" href="https://tinyurl.com/323btcue" target="_blank">↗ Report Part 2</a>
+          <a class="proj-link" href="docs/MAE425_Final_Project_Report.pdf" target="_blank">↗ Final Design/Mission Report</a>
+          <a class="proj-link matlab" href="docs/Project_Final.m" target="_blank">↗ MATLAB Mission & Simulation Script</a>
         </div>
       </div>
 
@@ -550,10 +567,10 @@
           <span class="tool-chip">NACA 4412</span>
         </div>
         <div class="project-links">
-          <a class="proj-link" href="https://tinyurl.com/muxwj53h" target="_blank">↗ Report 1</a>
-          <a class="proj-link" href="https://tinyurl.com/2vtzfh56" target="_blank">↗ Report 2</a>
-          <a class="proj-link" href="https://tinyurl.com/yzunc9kd" target="_blank">↗ Report 3</a>
-          <a class="proj-link" href="https://tinyurl.com/558hn38a" target="_blank">↗ Report 4</a>
+          <a class="proj-link" href="docs/MAE339_Lab2_hhkhan.pdf" target="_blank">↗ Fluid Flow Visualization</a>
+          <a class="proj-link" href="docs/MAE339_Lab3_hhkhan.pdf" target="_blank">↗ Heat Transfer In A Cylindrical Fin Under Steady State</a>
+          <a class="proj-link" href="docs/MAE339_Lab4_hhkhan.pdf" target="_blank">↗ Lift and Drag on Bodies in a Wind Tunnel</a>
+          <a class="proj-link" href="docs/MAE339_Lab5_hhkhan.pdf" target="_blank">↗ Unsteady Drag on Falling Coffee Filters Analysis</a>
         </div>
       </div>
 
@@ -567,7 +584,7 @@
           <span class="tool-chip">Aeropoxy</span>
         </div>
         <div class="project-links">
-          <a class="proj-link" href="https://tinyurl.com/5e2t6aa4" target="_blank">↗ Full Report</a>
+          <a class="proj-link" href="docs/MAE339_Glider_report.pdf" target="_blank">↗ Final Design Report</a>
         </div>
       </div>
 
@@ -591,12 +608,12 @@
         <h3>CNC Laser Cutting Specialist</h3>
         <p>Maintained and calibrated an in-house laser cutter, improving tolerances from 0.2mm to 0.04mm. Created a full safety and operations manual used to train new club members over three years.</p>
         <div class="project-tools">
-          <span class="tool-chip">Trocen CAD</span>
+          <span class="tool-chip">Trocen LaserCAD</span>
           <span class="tool-chip">Grbl</span>
           <span class="tool-chip">Mirror Alignment</span>
         </div>
         <div class="project-links">
-          <a class="proj-link" href="https://tinyurl.com/2u3wspb9" target="_blank">↗ Safety Manual</a>
+          <a class="proj-link" href="docs/Laser-Cutter-Manual.pdf" target="_blank">↗ CNC Laser Cutter Safety Manual</a>
         </div>
       </div>
 
