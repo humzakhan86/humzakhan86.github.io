@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Humza Khan — Aerospace Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0c10;
+    --surface: #111318;
+    --surface2: #181c24;
+    --border: rgba(255,255,255,0.07);
+    --accent: #4fc3f7;
+    --accent2: #81d4fa;
+    --text: #e8eaf0;
+    --muted: #7a8090;
+    --mono: 'Space Mono', monospace;
+    --sans: 'Syne', sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(79,195,247,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(79,195,247,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2.5rem;
+    background: rgba(10,12,16,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  section { position: relative; z-index: 1; }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8rem 2.5rem 4rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .hero-tag {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .hero-tag::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--accent);
+  }
+  h1 {
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 800;
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+  }
+  h1 span { color: var(--accent); }
+  .hero-sub {
+    font-size: 1.15rem;
+    color: var(--muted);
+    max-width: 520px;
+    margin-bottom: 2.5rem;
+    line-height: 1.8;
+  }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.2s;
+    display: inline-block;
+  }
+  .btn-primary { background: var(--accent); color: #0a0c10; font-weight: 700; }
+  .btn-primary:hover { background: var(--accent2); transform: translateY(-2px); }
+  .btn-secondary { border: 1px solid var(--border); color: var(--muted); }
+  .btn-secondary:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+  .hero-stats {
+    display: flex;
+    gap: 2.5rem;
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    flex-wrap: wrap;
+  }
+  .stat-num { font-size: 2rem; font-weight: 800; color: var(--accent); font-family: var(--mono); display: block; }
+  .stat-label { font-size: 12px; color: var(--muted); font-family: var(--mono); letter-spacing: 0.08em; }
+
+  /* SECTION HEADER */
+  .section-wrap { max-width: 1000px; margin: 0 auto; padding: 5rem 2.5rem; }
+  .section-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-label::before { content: ''; display: block; width: 20px; height: 1px; background: var(--accent); }
+  h2 {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 3rem;
+    color: var(--text);
+  }
+
+  /* ABOUT */
+  #about { background: var(--surface); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+  .about-text { color: var(--muted); line-height: 1.9; font-size: 0.95rem; }
+  .about-text p + p { margin-top: 1rem; }
+  .about-highlights { display: flex; flex-direction: column; gap: 1rem; }
+  .highlight-item {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    padding: 1rem 1.25rem;
+    border-radius: 4px;
+  }
+  .highlight-item strong { color: var(--text); font-weight: 700; font-size: 0.9rem; display: block; margin-bottom: 0.2rem; }
+  .highlight-item span { font-family: var(--mono); font-size: 11px; color: var(--muted); }
+
+  /* PROJECTS */
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.25rem; }
+  .project-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: border-color 0.2s, transform 0.2s;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .project-card:hover { border-color: rgba(79,195,247,0.3); transform: translateY(-3px); }
+  .project-card:hover::before { transform: scaleX(1); }
+  .project-tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    background: rgba(79,195,247,0.08);
+    padding: 3px 8px;
+    border-radius: 3px;
+    display: inline-block;
+    margin-bottom: 0.75rem;
+  }
+  .project-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text); }
+  .project-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.7; flex: 1; }
+  .project-tools { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 1rem; }
+  .tool-chip {
+    font-family: var(--mono);
+    font-size: 10px;
+    padding: 2px 7px;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    color: var(--muted);
+  }
+
+  /* PROJECT LINKS */
+  .project-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+  }
+  .proj-link {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    text-decoration: none;
+    padding: 4px 10px;
+    border: 1px solid rgba(79,195,247,0.25);
+    border-radius: 3px;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .proj-link:hover { background: rgba(79,195,247,0.1); border-color: var(--accent); }
+  .proj-link.video { color: #ef9f27; border-color: rgba(239,159,39,0.25); }
+  .proj-link.video:hover { background: rgba(239,159,39,0.08); border-color: #ef9f27; }
+
+  /* SKILLS */
+  #skills { background: var(--surface); }
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1.25rem; }
+  .skill-group { background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; }
+  .skill-group-title { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; color: var(--accent); margin-bottom: 0.75rem; }
+  .skill-list { list-style: none; }
+  .skill-list li {
+    font-size: 0.85rem;
+    color: var(--muted);
+    padding: 0.3rem 0;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .skill-list li:last-child { border-bottom: none; }
+  .skill-list li::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+
+  /* CONTACT */
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+  .contact-text { color: var(--muted); font-size: 0.95rem; line-height: 1.9; }
+  .contact-links { display: flex; flex-direction: column; gap: 1rem; }
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 1rem 1.25rem;
+    text-decoration: none;
+    transition: border-color 0.2s;
+  }
+  .contact-link:hover { border-color: rgba(79,195,247,0.4); }
+  .contact-link-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; color: var(--accent); display: block; margin-bottom: 2px; }
+  .contact-link-value { font-size: 0.9rem; color: var(--text); }
+
+  footer {
+    text-align: center;
+    padding: 2rem;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+    position: relative;
+    z-index: 1;
+  }
+  .divider { width: 100%; height: 1px; background: var(--border); }
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-in.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 700px) {
+    nav { padding: 1rem 1.25rem; }
+    .nav-links { gap: 1.25rem; }
+    .section-wrap { padding: 4rem 1.25rem; }
+    #hero { padding: 7rem 1.25rem 3rem; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .hero-stats { gap: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#hero">HHK.DEV</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-tag">B.S. AEROSPACE ENGINEERING — UNIVERSITY AT BUFFALO</div>
+  <h1>Humza<br><span>Khan</span></h1>
+  <p class="hero-sub">
+    Aerospace engineer specializing in aerodynamic analysis, structural design, and precision fabrication.
+    From first-principles simulations to flight-tested hardware.
+  </p>
+  <div class="hero-btns">
+    <a href="#projects" class="btn btn-primary">VIEW PROJECTS</a>
+    <a href="#contact" class="btn btn-secondary">GET IN TOUCH</a>
+  </div>
+  <div class="hero-stats">
+    <div>
+      <span class="stat-num">12th</span>
+      <span class="stat-label">AIAA DBF 2025 — 112 teams</span>
+    </div>
+    <div>
+      <span class="stat-num">8</span>
+      <span class="stat-label">Aircraft prototypes built</span>
+    </div>
+    <div>
+      <span class="stat-num">3.62</span>
+      <span class="stat-label">GPA — Magna Cum Laude</span>
+    </div>
+    <div>
+      <span class="stat-num">107</span>
+      <span class="stat-label">MPH peak UAV airspeed</span>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-wrap">
+    <div class="section-label">01 — ABOUT</div>
+    <h2>Builder. Analyst.<br>Flight tester.</h2>
+    <div class="about-grid fade-in">
+      <div class="about-text">
+        <p>
+          I'm an Aerospace Engineering graduate from the University at Buffalo (Magna Cum Laude, 2025)
+          with hands-on experience spanning the full engineering cycle — from computational analysis
+          to fabricating components and validating them in the air.
+        </p>
+        <p>
+          For three years I led manufacturing and fabrication for UB's AIAA Design/Build/Fly team,
+          building 8 unique aircraft prototypes and placing 12th internationally out of 112 teams in 2025 —
+          up from 56th when I first joined. I also served as Vice President of the 60+ member club,
+          managing a ~$45,000 budget and coordinating team logistics.
+        </p>
+        <p>
+          My work spans aerodynamic CFD (ANSYS Fluent, XFLR5), structural FEA, MATLAB simulations,
+          orbital mechanics, solid rocket motor fabrication, and CNC precision manufacturing.
+        </p>
+      </div>
+      <div class="about-highlights">
+        <div class="highlight-item">
+          <strong>AIAA DBF — Manufacturing Lead</strong>
+          <span>2022 – 2025 · 8 aircraft prototypes · Top 12 internationally</span>
+        </div>
+        <div class="highlight-item">
+          <strong>UB AIAA — Vice President</strong>
+          <span>2024 – 2025 · 60+ members · ~$45,000 budget</span>
+        </div>
+        <div class="highlight-item">
+          <strong>CNC Laser Cutting Specialist</strong>
+          <span>Tolerances improved from 0.2mm → 0.04mm</span>
+        </div>
+        <div class="highlight-item">
+          <strong>Undergraduate Teaching Assistant</strong>
+          <span>Spring 2025 · MAE385: Engineering Materials Lab</span>
+        </div>
+        <div class="highlight-item">
+          <strong>UB SEDS — Propulsion Team</strong>
+          <span>HTPB solid rocket motor formulation · IREC competition</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-wrap">
+    <div class="section-label">02 — PROJECTS</div>
+    <h2>Engineering work.</h2>
+    <div class="projects-grid">
+
+      <!-- ============================================================
+           HOW TO EDIT A PROJECT CARD:
+           1. Change the text between <h3>...</h3> for the title
+           2. Change the text between <p>...</p> for the description
+           3. For links: replace the URL inside href="..." with your link
+              - For GitHub-hosted files use: docs/your-filename.pdf
+              - For YouTube videos use: https://youtube.com/watch?v=...
+           ============================================================ -->
+
+      <div class="project-card fade-in">
+        <span class="project-tag">UAV · SENIOR DESIGN</span>
+        <h3>Hermes — Wingtip Motor Study</h3>
+        <p>Designed and manufactured a 7lb, 5ft wingspan UAV to study wingtip vs. mid-wing motor placement and its effect on induced drag. Peak airspeed of ~107 mph recorded via onboard SD card, post-processed in MATLAB.</p>
+        <div class="project-tools">
+          <span class="tool-chip">MATLAB</span>
+          <span class="tool-chip">CNC Hotwire</span>
+          <span class="tool-chip">Fiberglass</span>
+          <span class="tool-chip">3D Printing</span>
+        </div>
+        <div class="project-links">
+          <!-- REPLACE the href="#" below with your actual YouTube link -->
+          <a class="proj-link video" href="#" target="_blank">▶ Maiden Flight</a>
+          <a class="proj-link video" href="#" target="_blank">▶ Outboard Test</a>
+          <a class="proj-link video" href="#" target="_blank">▶ Inboard Test</a>
+        </div>
+      </div>
+
+      <div class="project-card fade-in">
+        <span class="project-tag">COMPETITION · 3 YEARS</span>
+        <h3>AIAA Design/Build/Fly</h3>
+        <p>Manufacturing and fabrication lead across 3 competition years. Built 8 aircraft prototypes using carbon fiber layups, CNC laser/hot-wire cutting, and 3D-printed molds. Placed 12th/112 internationally in 2025.</p>
+        <div class="project-tools">
+          <span class="tool-chip">ANSYS Fluent</span>
+          <span class="tool-chip">XFLR5</span>
+          <span class="tool-chip">SolidWorks</span>
+          <span class="tool-chip">Carbon Fiber</span>
+        </div>
+        <div class="project-links">
+          <!-- REPLACE href="#" with your YouTube flight video links -->
+          <a class="proj-link video" href="#" target="_blank">▶ Bull Shark Flight</a>
+          <a class="proj-link video" href="#" target="_blank">▶ Condor V4 M2</a>
+          <a class="proj-link video" href="#" target="_blank">▶ 2023 Flight</a>
+        </div>
+      </div>
+
+      <div class="project-card fade-in">
+        <span class="project-tag">AIRCRAFT DESIGN</span>
+        <h3>Latios — STOL Business Jet</h3>
+        <p>Designed a Short Takeoff and Landing business jet targeting 3,000 NM range with a 1,200 ft field length per FAR 25. MATLAB convergence scripts optimized a T-tail, over-wing engine configuration achieving ~1,035 ft takeoff distance.</p>
+        <div class="project-tools">
+          <span class="tool-chip">MATLAB</span>
+          <span class="tool-chip">SolidWorks</span>
+          <span class="tool-chip">FAR 25</span>
+        </div>
+        <div class="project-links">
+          <!-- These links came from your portfolio PDF — already filled in -->
+          <!-- To host locally instead: upload PDFs to GitHub and change href to: docs/latios-report-1.pdf -->
+          <a class="proj-link" href="https://tinyurl.com/3ynevyhc" target="_blank">↗ Report Part 1</a>
+          <a class="proj-link" href="https://tinyurl.com/3xpd6njs" target="_blank">↗ Report Part 2</a>
+        </div>
+      </div>
+
+      <div class="project-card fade-in">
+        <span class="project-tag">PROPULSION</span>
+        <h3>Single-Stage Rocket Optimization</h3>
+        <p>MATLAB simulation iterating across 25 million geometry combinations to maximize payload ratio. Verified CG/CP locations using OpenRocket — matched within 1–2% of analytical outputs across seven mission cases.</p>
+        <div class="project-tools">
+          <span class="tool-chip">MATLAB</span>
+          <span class="tool-chip">OpenRocket</span>
+          <span class="tool-chip">Trajectory Theory</span>
+        </div>
+        <div class="project-links">
+          <a class="proj-link" href="https://tinyurl.com/2s3exetu" target="_blank">↗ Report Part 1</a>
+          <a class="proj-link" href="https://tinyurl.com/yenavbdx" target="_blank">↗ Report Part 2</a>
+        </div>
+      </div>
+
+      <div class="project-card fade-in">
+        <span class="project-tag">CFD · FEA</span>
+        <h3>Sounding Rocket Structural Analysis</h3>
+        <p>CFD simulation in ANSYS Fluent at 236 m/s. Structural FEA across aluminum, titanium, and carbon fiber — titanium showed 26% less deformation than aluminum; carbon fiber unsuitable under compressive loads.</p>
+        <div class="project-tools">
+          <span class="tool-chip">ANSYS Fluent</span>
+          <span class="tool-chip">ANSYS Static Structural</span>
+          <span class="tool-chip">SolidWorks</span>
+        </div>
+        <div class="project-links">
+          <a class="proj-link" href="https://tinyurl.com/yck3y7hw" target="_blank">↗ Full Report</a>
+        </div>
+      </div>
+
+      <div class="project-card fade-in">
+        <span class="project-tag">ORBITAL MECHANICS</span>
+        <h3>Spacecraft Mission Design</h3>
+        <p>Designed and simulated a complete GEO inspection mission for InSat-1 targeting the Yellowhammer satellite. Planned 12 propellant-constrained burns for LEO-to-GEO transfer, visualized in MATLAB RIC coordinates.</p>
+        <div class="project-tools">
+          <span class="tool-chip">MATLAB</span>
+          <span class="tool-chip">Orbital Mechanics</span>
+          <span class="tool-chip">ΔV Planning</span>
+        </div>
+        <div class="project-links">
+          <a class="proj-link" href="https://tinyurl.com/2v8k5w39" target="_blank">↗ Report Part 1</a>
+          <a class="proj-link" href="https://tinyurl.com/323btcue" target="_blank">↗ Report Part 2</a>
+        </div>
+      </div>
+
+      <div class="project-card fade-in">
+        <span class="project-tag">PROPULSION · HANDS-ON</span>
+        <h3>Solid Rocket Motor — UB SEDS</h3>
+        <p>Mixed and cured custom HTPB-based propellant. Machined graphite nozzles to ±0.01mm tolerance on a precision lathe. Conducted static fire tests with load cell. Scaled variants flew at IREC competition.</p>
+        <div class="project-tools">
+          <span class="tool-chip">Lathe</span>
+          <span class="tool-chip">HTPB Propellant</span>
+          <span class="tool-chip">Load Cell Testing</span>
+        </div>
+        <!-- No public report links for this project — add one below if you have it -->
+        <!-- <div class="project-links">
+          <a class="proj-link" href="docs/seds-srm-report.pdf" target="_blank">↗ Report</a>
+        </div> -->
+      </div>
+
+      <div class="project-card fade-in">
+        <span class="project-tag">AERODYNAMICS · LAB</span>
+        <h3>Experimental Aerodynamics & Heat Transfer</h3>
+        <p>Wind tunnel, flow visualization, and heat transfer experiments. Measured NACA 4412 pressure distributions, computed aerodynamic coefficients via MATLAB integration, and validated 1D fin theory with 93% efficiency.</p>
+        <div class="project-tools">
+          <span class="tool-chip">Wind Tunnel</span>
+          <span class="tool-chip">MATLAB</span>
+          <span class="tool-chip">NACA 4412</span>
+        </div>
+        <div class="project-links">
+          <a class="proj-link" href="https://tinyurl.com/muxwj53h" target="_blank">↗ Report 1</a>
+          <a class="proj-link" href="https://tinyurl.com/2vtzfh56" target="_blank">↗ Report 2</a>
+          <a class="proj-link" href="https://tinyurl.com/yzunc9kd" target="_blank">↗ Report 3</a>
+          <a class="proj-link" href="https://tinyurl.com/558hn38a" target="_blank">↗ Report 4</a>
+        </div>
+      </div>
+
+      <div class="project-card fade-in">
+        <span class="project-tag">3D PRINTING · CLASS</span>
+        <h3>3D Printed Glider — Aero Lab Competition</h3>
+        <p>Designed and fabricated a fully 3D-printed glider using Brass HTPLA and LW-PLA. Iterated on CG placement and epoxy coatings after early structural failures, achieving stable flight performance.</p>
+        <div class="project-tools">
+          <span class="tool-chip">Bambu Lab A1</span>
+          <span class="tool-chip">LW-PLA</span>
+          <span class="tool-chip">Aeropoxy</span>
+        </div>
+        <div class="project-links">
+          <a class="proj-link" href="https://tinyurl.com/5e2t6aa4" target="_blank">↗ Full Report</a>
+        </div>
+      </div>
+
+      <div class="project-card fade-in">
+        <span class="project-tag">HIGH POWER ROCKETRY</span>
+        <h3>LOC IV — Level 1 Certification</h3>
+        <p>Assembled and modified the LOC Precision LOC IV rocket kit for Level 1 HPR certification. Remodeled nose cone for drag reduction, validated motor selection in OpenRocket, and integrated full recovery system.</p>
+        <div class="project-tools">
+          <span class="tool-chip">OpenRocket</span>
+          <span class="tool-chip">Tripoli L1</span>
+          <span class="tool-chip">Fabrication</span>
+        </div>
+        <!-- Add a link below once you have a launch video or report -->
+        <!-- <div class="project-links">
+          <a class="proj-link video" href="#" target="_blank">▶ Launch Video</a>
+        </div> -->
+      </div>
+
+      <div class="project-card fade-in">
+        <span class="project-tag">CNC · MANUFACTURING</span>
+        <h3>CNC Laser Cutting Specialist</h3>
+        <p>Maintained and calibrated an in-house laser cutter, improving tolerances from 0.2mm to 0.04mm. Created a full safety and operations manual used to train new club members over three years.</p>
+        <div class="project-tools">
+          <span class="tool-chip">Trocen CAD</span>
+          <span class="tool-chip">Grbl</span>
+          <span class="tool-chip">Mirror Alignment</span>
+        </div>
+        <div class="project-links">
+          <a class="proj-link" href="https://tinyurl.com/2u3wspb9" target="_blank">↗ Safety Manual</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-wrap">
+    <div class="section-label">03 — SKILLS</div>
+    <h2>Technical toolkit.</h2>
+    <div class="skills-grid fade-in">
+      <div class="skill-group">
+        <div class="skill-group-title">SIMULATION & ANALYSIS</div>
+        <ul class="skill-list">
+          <li>ANSYS Fluent (CFD)</li>
+          <li>ANSYS Static Structural (FEA)</li>
+          <li>XFLR5 (Aerodynamics)</li>
+          <li>OpenRocket</li>
+          <li>MATLAB</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">CAD & DESIGN</div>
+        <ul class="skill-list">
+          <li>SolidWorks</li>
+          <li>Autodesk Fusion 360</li>
+          <li>Trocen Laser CAD</li>
+          <li>WingWire</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">MANUFACTURING</div>
+        <ul class="skill-list">
+          <li>Carbon fiber layups</li>
+          <li>CNC laser cutting</li>
+          <li>CNC hot wire cutting</li>
+          <li>Precision lathe</li>
+          <li>3D printing (FDM)</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">PROGRAMMING</div>
+        <ul class="skill-list">
+          <li>MATLAB</li>
+          <li>Python</li>
+          <li>C++</li>
+          <li>Visual Basic</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">3D PRINTING</div>
+        <ul class="skill-list">
+          <li>Bambu Studio</li>
+          <li>Cura</li>
+          <li>Orca Slicer</li>
+          <li>LW-PLA / HTPLA</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">LANGUAGES</div>
+        <ul class="skill-list">
+          <li>English (fluent)</li>
+          <li>Urdu (fluent)</li>
+          <li>Punjabi (fluent)</li>
+          <li>Hindi (fluent)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-wrap">
+    <div class="section-label">04 — CONTACT</div>
+    <h2>Let's connect.</h2>
+    <div class="contact-grid fade-in">
+      <div class="contact-text">
+        <p>
+          I'm actively looking for entry-level opportunities in aerospace engineering —
+          structures, aerodynamics, propulsion, or UAV systems. If you think there's a fit,
+          I'd love to hear from you.
+        </p>
+        <br>
+        <p>Based in Buffalo, New York. Open to relocation.</p>
+      </div>
+      <div class="contact-links">
+        <a class="contact-link" href="mailto:hhk.hamza123918@gmail.com">
+          <div>
+            <span class="contact-link-label">EMAIL</span>
+            <!-- REPLACE with your email if it changes -->
+            <span class="contact-link-value">hhk.hamza123918@gmail.com</span>
+          </div>
+        </a>
+        <a class="contact-link" href="tel:5162254887">
+          <div>
+            <span class="contact-link-label">PHONE</span>
+            <span class="contact-link-value">516-225-4887</span>
+          </div>
+        </a>
+        <a class="contact-link" href="https://www.linkedin.com/in/humza-khan" target="_blank">
+          <div>
+            <span class="contact-link-label">LINKEDIN</span>
+            <!-- REPLACE with your exact LinkedIn URL -->
+            <span class="contact-link-value">linkedin.com/in/humza-khan</span>
+          </div>
+        </a>
+        <!-- ADD your GitHub profile link once your account is created -->
+        <!-- <a class="contact-link" href="https://github.com/yourusername" target="_blank">
+          <div>
+            <span class="contact-link-label">GITHUB</span>
+            <span class="contact-link-value">github.com/yourusername</span>
+          </div>
+        </a> -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Humza Hassan Khan &mdash; Aerospace Engineer &mdash; Buffalo, NY</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
