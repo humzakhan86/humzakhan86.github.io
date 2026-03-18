@@ -255,8 +255,8 @@
   .proj-link.video:hover { background: rgba(239,159,39,0.08); border-color: #ef9f27; }
   .proj-link.matlab { color: #e53935; border-color: rgba(229,57,53,0.25); }
   .proj-link.matlab:hover { background: rgba(229,57,53,0.08); border-color: #e53935; }
-  .project-links.two-col-links { display: flex; flex-wrap: wrap; gap: 12px; }
-  .project-links.two-col-links > div { display: flex; flex-direction: column; gap: 8px; flex: 1; min-width: 130px; align-items: flex-start; white-space: nowrap;}
+  .project-links.two-col-links { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .project-links.two-col-links > div { display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
 
   /* SKILLS */
   #skills { background: var(--surface); }
