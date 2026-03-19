@@ -949,4 +949,12 @@
     goTo(current + 1);
     startTimer();
   });
-  document.getElementById('pre
+  document.getElementById('prevBtn').addEventListener('click', () => {
+    goTo(current - 1);
+    startTimer();
+  });
+
+  // Pause on hover
+  slideshow.addEventListener('mouseenter', () => clearInterval(timer));
+  slideshow.addEventListener('mouseleave', () => startTimer());
+</script>
