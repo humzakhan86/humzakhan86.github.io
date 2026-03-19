@@ -77,12 +77,81 @@
   /* HERO */
   #hero {
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 3rem;
     padding: 8rem 2.5rem 4rem;
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto;
+  }
+  .hero-left { display: flex; flex-direction: column; }
+
+  /* SLIDESHOW */
+  .hero-slideshow {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4/3;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--surface2);
+  }
+  .slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+    pointer-events: none;
+  }
+  .slide.active { opacity: 1; pointer-events: auto; }
+  .slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .slide.transition-zoom img { animation: zoomIn 5s ease forwards; }
+  @keyframes zoomIn { from { transform: scale(1); } to { transform: scale(1.06); } }
+  .slide-nav {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 0.75rem;
+    opacity: 0;
+    transition: opacity 0.2s;
+    z-index: 10;
+  }
+  .hero-slideshow:hover .slide-nav { opacity: 1; }
+  .slide-btn {
+    background: rgba(10,12,16,0.7);
+    border: 1px solid var(--border);
+    color: var(--accent);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+    backdrop-filter: blur(4px);
+  }
+  .slide-btn:hover { background: rgba(79,195,247,0.15); }
+  .slide-counter {
+    position: absolute;
+    bottom: 0.6rem;
+    right: 0.75rem;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: rgba(255,255,255,0.5);
+    background: rgba(10,12,16,0.5);
+    padding: 2px 7px;
+    border-radius: 3px;
+    backdrop-filter: blur(4px);
   }
   .hero-tag {
     font-family: var(--mono);
@@ -313,7 +382,7 @@
     nav { padding: 1rem 1.25rem; }
     .nav-links { gap: 1.25rem; }
     .section-wrap { padding: 4rem 1.25rem; }
-    #hero { padding: 7rem 1.25rem 3rem; }
+    #hero { padding: 7rem 1.25rem 3rem; grid-template-columns: 1fr; }
     .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
     .hero-stats { gap: 1.5rem; }
   }
@@ -333,33 +402,43 @@
 
 <!-- HERO -->
 <section id="hero">
-  <div class="hero-tag">B.S. AEROSPACE ENGINEERING — UNIVERSITY AT BUFFALO</div>
-  <h1>Humza<br><span>Khan</span></h1>
-  <p class="hero-sub">
-    Aerospace engineer specializing in aerodynamic analysis, structural design, and precision fabrication.
-    From first-principles simulations to flight-tested hardware.
-  </p>
-  <div class="hero-btns">
-    <a href="#projects" class="btn btn-primary">VIEW PROJECTS</a>
-    <a href="#contact" class="btn btn-secondary">GET IN TOUCH</a>
+  <div class="hero-left">
+    <div class="hero-tag">B.S. AEROSPACE ENGINEERING — UNIVERSITY AT BUFFALO</div>
+    <h1>Humza<br><span>Khan</span></h1>
+    <p class="hero-sub">
+      Aerospace engineer specializing in aerodynamic analysis, structural design, and precision fabrication.
+      From first-principles simulations to flight-tested hardware.
+    </p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn btn-primary">VIEW PROJECTS</a>
+      <a href="#contact" class="btn btn-secondary">GET IN TOUCH</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <span class="stat-num">12th</span>
+        <span class="stat-label">AIAA DBF 2025 — 112 teams</span>
+      </div>
+      <div>
+        <span class="stat-num">8</span>
+        <span class="stat-label">Aircraft prototypes built</span>
+      </div>
+      <div>
+        <span class="stat-num">3.62</span>
+        <span class="stat-label">GPA — Magna Cum Laude</span>
+      </div>
+      <div>
+        <span class="stat-num">107</span>
+        <span class="stat-label">MPH peak UAV airspeed</span>
+      </div>
+    </div>
   </div>
-  <div class="hero-stats">
-    <div>
-      <span class="stat-num">12th</span>
-      <span class="stat-label">AIAA DBF 2025 — 112 teams</span>
+
+  <div class="hero-slideshow" id="slideshow">
+    <div class="slide-nav">
+      <button class="slide-btn" id="prevBtn">&#8592;</button>
+      <button class="slide-btn" id="nextBtn">&#8594;</button>
     </div>
-    <div>
-      <span class="stat-num">8</span>
-      <span class="stat-label">Aircraft prototypes built</span>
-    </div>
-    <div>
-      <span class="stat-num">3.62</span>
-      <span class="stat-label">GPA — Magna Cum Laude</span>
-    </div>
-    <div>
-      <span class="stat-num">107</span>
-      <span class="stat-label">MPH peak UAV airspeed</span>
-    </div>
+    <div class="slide-counter" id="slideCounter">1 / 282</div>
   </div>
 </section>
 
@@ -717,7 +796,6 @@
         <a class="contact-link" href="mailto:hhk.hamza123918@gmail.com" target="_blank">
           <div>
             <span class="contact-link-label">EMAIL</span>
-            <!-- REPLACE with your email if it changes -->
             <span class="contact-link-value">hhk.hamza123918@gmail.com</span>
           </div>
         </a>
@@ -751,8 +829,107 @@
 </footer>
 
 <script>
+  // Intersection observer for fade-in animations
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.1 });
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Slideshow
+  const TOTAL = 282;
+  const INTERVAL = 4000;
+  const transitions = ['transition-fade', 'transition-zoom'];
+  const slideshow = document.getElementById('slideshow');
+  const counter = document.getElementById('slideCounter');
+
+  // Shuffle array
+  function shuffle(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  }
+
+  // Build shuffled order
+  let order = shuffle([...Array(TOTAL)].map((_, i) => i + 1));
+  let current = 0;
+  let slides = [];
+  let timer = null;
+  let loaded = new Set();
+
+  function imgPath(n) {
+    return `images/img-${n}.jpg`;
+  }
+
+  function preload(indices) {
+    indices.forEach(idx => {
+      const n = order[idx];
+      if (n && !loaded.has(n)) {
+        const img = new Image();
+        img.src = imgPath(n);
+        loaded.add(n);
+      }
+    });
+  }
+
+  function createSlide(index) {
+    const n = order[index];
+    const div = document.createElement('div');
+    div.className = 'slide';
+    const img = document.createElement('img');
+    img.src = imgPath(n);
+    img.alt = `Portfolio photo ${n}`;
+    div.appendChild(img);
+    slideshow.insertBefore(div, document.querySelector('.slide-nav'));
+    slides[index] = div;
+    loaded.add(n);
+    return div;
+  }
+
+  function goTo(index, direction) {
+    index = ((index % TOTAL) + TOTAL) % TOTAL;
+    const prev = slides[current];
+
+    if (!slides[index]) createSlide(index);
+    const next = slides[index];
+
+    // Pick random transition
+    const t = transitions[Math.floor(Math.random() * transitions.length)];
+    next.classList.remove(...transitions);
+    next.classList.add(t);
+
+    if (prev) prev.classList.remove('active');
+    next.classList.add('active');
+
+    current = index;
+    counter.textContent = `${current + 1} / ${TOTAL}`;
+
+    // Preload next 3
+    preload([current + 1, current + 2, current + 3].map(i => ((i % TOTAL) + TOTAL) % TOTAL));
+  }
+
+  function startTimer() {
+    clearInterval(timer);
+    timer = setInterval(() => goTo(current + 1), INTERVAL);
+  }
+
+  // Init — preload first 4 and show first
+  preload([0, 1, 2, 3]);
+  createSlide(0);
+  goTo(0);
+  startTimer();
+
+  document.getElementById('nextBtn').addEventListener('click', () => {
+    goTo(current + 1);
+    startTimer();
+  });
+  document.getElementById('prevBtn').addEventListener('click', () => {
+    goTo(current - 1);
+    startTimer();
+  });
+
+  // Pause on hover
+  slideshow.addEventListener('mouseenter', () => clearInterval(timer));
+  slideshow.addEventListener('mouseleave', () => startTimer());
 </script>
