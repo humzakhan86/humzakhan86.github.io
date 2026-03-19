@@ -153,7 +153,29 @@
     border-radius: 3px;
     backdrop-filter: blur(4px);
   }
-  .hero-tag {
+  .hero-right {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    align-self: flex-start;
+    margin-top: 2rem;
+  }
+  .slideshow-caption {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .slideshow-caption::before {
+    content: '';
+    display: block;
+    width: 16px;
+    height: 1px;
+    background: var(--muted);
+  }
     font-family: var(--mono);
     font-size: 12px;
     color: var(--accent);
@@ -433,12 +455,15 @@
     </div>
   </div>
 
-  <div class="hero-slideshow" id="slideshow">
-    <div class="slide-nav">
-      <button class="slide-btn" id="prevBtn">&#8592;</button>
-      <button class="slide-btn" id="nextBtn">&#8594;</button>
+  <div class="hero-right">
+    <div class="slideshow-caption">SNIPPETS FROM MY AEROSPACE JOURNEY</div>
+    <div class="hero-slideshow" id="slideshow">
+      <div class="slide-nav">
+        <button class="slide-btn" id="prevBtn">&#8592;</button>
+        <button class="slide-btn" id="nextBtn">&#8594;</button>
+      </div>
+    <div class="slide-counter" id="slideCounter">1 / 284</div>
     </div>
-    <div class="slide-counter" id="slideCounter">1 / 282</div>
   </div>
 </section>
 
@@ -793,10 +818,10 @@
         <p>Based in Buffalo, New York. Open to relocation.</p>
       </div>
       <div class="contact-links">
-        <a class="contact-link" href="mailto:hhk.hamza123918@gmail.com" target="_blank">
+        <a class="contact-link" href="/cdn-cgi/l/email-protection#18707073367079756279292a2b212920587f75797174367b7775" target="_blank">
           <div>
             <span class="contact-link-label">EMAIL</span>
-            <span class="contact-link-value">hhk.hamza123918@gmail.com</span>
+            <span class="contact-link-value"><span class="__cf_email__" data-cfemail="5e36363570363f33243f6f6c6d676f661e39333f3732703d3133">[email&#160;protected]</span></span>
           </div>
         </a>
         <a class="contact-link" href="tel:+15162254887">
@@ -828,7 +853,7 @@
   <p>Humza Hassan Khan &mdash; Aerospace Engineer &mdash; Buffalo, NY</p>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // Intersection observer for fade-in animations
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
@@ -924,12 +949,4 @@
     goTo(current + 1);
     startTimer();
   });
-  document.getElementById('prevBtn').addEventListener('click', () => {
-    goTo(current - 1);
-    startTimer();
-  });
-
-  // Pause on hover
-  slideshow.addEventListener('mouseenter', () => clearInterval(timer));
-  slideshow.addEventListener('mouseleave', () => startTimer());
-</script>
+  document.getElementById('pre
