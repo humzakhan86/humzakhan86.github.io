@@ -176,6 +176,32 @@
     height: 1px;
     background: var(--muted);
   }
+  .doc-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 0.75rem;
+  }
+  .doc-btn {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    padding: 0.5rem 1.1rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.2s;
+    display: inline-block;
+  }
+  .doc-btn-resume {
+    background: var(--accent);
+    color: #0a0c10;
+  }
+  .doc-btn-resume:hover { background: var(--accent2); transform: translateY(-2px); }
+  .doc-btn-portfolio {
+    background: #ef9f27;
+    color: #0a0c10;
+  }
+  .doc-btn-portfolio:hover { background: #f5b84a; transform: translateY(-2px); }
     font-family: var(--mono);
     font-size: 12px;
     color: var(--accent);
@@ -464,6 +490,10 @@
     <div class="slide-counter" id="slideCounter">1 / 284</div>
     </div>
     <div class="slideshow-caption">SNIPPETS FROM MY AEROSPACE JOURNEY SO FAR</div>
+    <div class="doc-buttons">
+      <a class="doc-btn doc-btn-resume" href="docs/Humza-Khan-Resume.pdf" target="_blank">↗ RESUME</a>
+      <a class="doc-btn doc-btn-portfolio" href="docs/Humza-Khan-Engineering-Portfolio.pdf" target="_blank">↗ PORTFOLIO</a>
+    </div>
   </div>
 </section>
 
@@ -818,10 +848,10 @@
         <p>Based in Buffalo, New York. Open to relocation.</p>
       </div>
       <div class="contact-links">
-        <a class="contact-link" href="mailto:hhk.hamza123918@gmail.com" target="_blank">
+        <a class="contact-link" href="/cdn-cgi/l/email-protection#bcd4d4d792d4ddd1c6dd8d8e8f858d84fcdbd1ddd5d092dfd3d1" target="_blank">
           <div>
             <span class="contact-link-label">EMAIL</span>
-            <span class="contact-link-value">hhk.hamza123918@gmail.com</span>
+            <span class="contact-link-value"><span class="__cf_email__" data-cfemail="28404043064049455249191a1b111910684f45494144064b4745">[email&#160;protected]</span></span>
           </div>
         </a>
         <a class="contact-link" href="tel:+15162254887">
@@ -853,7 +883,7 @@
   <p>Humza Hassan Khan &mdash; Aerospace Engineer &mdash; Buffalo, NY</p>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // Intersection observer for fade-in animations
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
